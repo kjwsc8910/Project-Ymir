@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 2083803305}
   m_Layer: 0
   m_Name: World Mannager
-  m_TagString: Untagged
+  m_TagString: Mannager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chunkPrefab: {fileID: 7938733358227780981, guid: 214b48b312314a6469a238a342647d66, type: 3}
+  activeChunks: []
 --- !u!4 &2083803306
 Transform:
   m_ObjectHideFlags: 0

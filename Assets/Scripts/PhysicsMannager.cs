@@ -4,30 +4,78 @@ using UnityEngine;
 
 public static class PhysicsMannager
 {
+	private static ChunkMannager chunkMannager;
 
-	public static void SwapWith(ChunkData chunk, int X, int Y, int toSwapX, int toSwapY, Constants.element toSwap)
+	public static void PhysicsSetUp()
 	{
-		int i = 0, j = 0;
+		chunkMannager = GameObject.FindGameObjectWithTag("Mannager").GetComponent<ChunkMannager>();
+	}	
+
+	public static void SwapWith(ChunkData chunk, int X, int Y, Constants.element toSwap, int toSwapX, int toSwapY, int i, int j)
+	{
+		Constants.element[,] matrix = chunk.matrix;
+		Constants.element element = matrix[X, Y];
+
+		Debug.Log("shit");
 
 		if (X == toSwapX && Y == toSwapY) return;
 
-		if ((X > -1 && X < Constants.chunkSize) && (Y > -1 && Y < Constants.chunkSize))
-		{
+		if (chunkMannager.chunks[i, j] == null) return;
 
+		ChunkData targetChunk = chunkMannager.chunks[i, j].GetComponent<ChunkData>();
+
+		matrix[X, Y] = toSwap;
+		targetChunk.matrix[toSwapX, toSwapY] = element;
+	}
+
+	public static void GetElement(ChunkData chunk, int X, int Y, int toSwapX, int toSwapY, out int i, out int j, out int targX, out int targY, out Constants.element element)
+	{
+		Constants.element[,] matrix = chunk.matrix;
+		i = chunk.i;
+		j = chunk.j;
+		targX = toSwapX;
+		targY = toSwapY;
+		element = matrix[X, Y];
+
+		if (X == toSwapX && Y == toSwapY) return;
+
+		if ((toSwapX > -1) && (toSwapX < Constants.chunkSize) && (toSwapY > -1) && (toSwapY < Constants.chunkSize))
+		{
+			element = matrix[toSwapX, toSwapY];
+			Debug.Log("insdie");
 		}
 		else
 		{
-			if (toSwapX > Constants.chunkSize) i = 1;
-			if (toSwapX < 0) i = -1;
-			if (toSwapX > Constants.chunkSize) j = 1;
-			if (toSwapX < 0) j = -1;
+			Debug.Log("outside");
+			if (toSwapX > Constants.chunkSize - 1) { i += 2; toSwapX -= (Constants.chunkSize - 1); };
+			if (toSwapX < 0) { i += -2; toSwapX += (Constants.chunkSize - 1); };
+			if (toSwapY > Constants.chunkSize - 1) { j += 2; toSwapY -= (Constants.chunkSize - 1); };
+			if (toSwapY < 0) { j += -2; toSwapY += (Constants.chunkSize - 1); };
+
+			i *= 2;
+			j *= 2;
+
+			if (i < 0) i = -1 - i;
+			if (j < 0) j = -1 - j;
+
+			targX = toSwapX;
+			targY = toSwapY;
+
+			if (chunkMannager.chunks[i, j] == null) { element = new Constants.element(Constants.eType.OutOfBounds); return; };
+
+			ChunkData targetChunk = chunkMannager.chunks[i, j].GetComponent<ChunkData>();
+
+			element = targetChunk.matrix[toSwapX, toSwapY];
 		}
+	}
 
-	} 
-
-	public static void UpdateSolid()
+	public static void UpdateSolid(ChunkData chunk, int X, int Y)
 	{
-
+		int i = 0, j = 0, targX = X, targY = Y - 1;
+		Constants.element element;
+		GetElement(chunk, X, Y, X, Y - 1, out i, out j, out targX, out targY, out element);
+		Debug.Log(element.type);
+		if ((Constants.eDataSet(element.type).state != Constants.eState.Solid) && (Constants.eDataSet(element.type).state != Constants.eState.OutOfBounds)) SwapWith(chunk, X, Y, element, targX, targY, i, j);
 	}
 
 	public static void UpdateLiquid()

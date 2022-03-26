@@ -15,6 +15,7 @@ public static class Constants
 	{ 
 		eData[] array = new eData[]
 		{
+			new eData(eState.OutOfBounds, Color.black),	//OutOfBounds
 			new eData(eState.Empty, Color.black),	//Empty
 			new eData(eState.Solid, Color.yellow),	//Sand
 			new eData(eState.Liquid, Color.blue)	//Water
@@ -35,6 +36,7 @@ public static class Constants
 
 	public enum eType
 	{
+		OutOfBounds,
 		Empty,
 		Sand,
 		water,
@@ -42,6 +44,7 @@ public static class Constants
 
 	public enum eState
 	{
+		OutOfBounds,
 		Empty,
 		Solid,
 		Liquid,

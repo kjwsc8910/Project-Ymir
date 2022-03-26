@@ -9,8 +9,8 @@ public class ChunkMannager : MonoBehaviour
     [SerializeField]
     GameObject chunkPrefab;
 
-    GameObject[,] chunks;
-    GameObject[] activeChunks;
+    public GameObject[,] chunks;
+    public GameObject[] activeChunks;
     int numOfChunks; //Number of chunks loaded in
 
     public static bool run = false;
@@ -21,6 +21,9 @@ public class ChunkMannager : MonoBehaviour
         chunks = new GameObject[Constants.worldSize, Constants.worldSize];
         activeChunks = new GameObject[Constants.worldSize * Constants.worldSize];
         numOfChunks = 0;
+
+        //Physics Set Up
+        PhysicsMannager.PhysicsSetUp();
 
         GenerateChunk(0, 0);
         GenerateChunk(1, 0);
@@ -63,7 +66,7 @@ public class ChunkMannager : MonoBehaviour
 		//Cycle through chunks
 		for (int i = 0; i < numOfChunks; i++)
 		{
-            GameObject chunk = activeChunks[i];
+            ChunkData chunk = activeChunks[i].GetComponent<ChunkData>();
             Constants.element[,] matrix = chunk.GetComponent<ChunkData>().matrix;
             Constants.element[,] nMatrix = matrix;
 
@@ -72,6 +75,7 @@ public class ChunkMannager : MonoBehaviour
 				for (int x = 0; x < Constants.chunkSize; x++)
 				{
                     //Run Physics
+                    if (Constants.eDataSet(matrix[x, y].type).state == Constants.eState.Solid) PhysicsMannager.UpdateSolid(chunk, x, y);
 				}
 			}
 		}

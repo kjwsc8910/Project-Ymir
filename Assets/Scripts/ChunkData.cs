@@ -8,11 +8,22 @@ public class ChunkData : MonoBehaviour
     public Constants.element[,] matrix;
     public int posX;
     public int posY;
+    public int i;
+    public int j;
 
     void Start()
     {
 
         matrix = new Constants.element[Constants.chunkSize, Constants.chunkSize];
+
+        i = posX;
+        j = posY;
+
+        i *= 2;
+        j *= 2;
+
+        if (i < 0) i = -1 - i;
+        if (j < 0) j = -1 - j;
 
         ChunkMannager.run = true;
     }
