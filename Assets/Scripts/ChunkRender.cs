@@ -25,7 +25,7 @@ public class ChunkRender : MonoBehaviour
 			for (int x = 0; x < Constants.chunkSize; x++)
 			{
                 texture.SetPixel(x, y, Color.black);
-                if (elements[x, y].type != Constants.eType.Empty) texture.SetPixel(x, y, elements[x, y].colour);
+                if (elements[x, y].type != Constants.eType.Empty) texture.SetPixel(x, y, Constants.eDataSet(elements[x, y].type).colour);
 			}
 		}
         texture.Apply();

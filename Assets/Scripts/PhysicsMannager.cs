@@ -5,6 +5,41 @@ using UnityEngine;
 public static class PhysicsMannager
 {
 
+	public static void SwapWith(ChunkData chunk, int X, int Y, int toSwapX, int toSwapY, Constants.element toSwap)
+	{
+		int i = 0, j = 0;
+
+		if (X == toSwapX && Y == toSwapY) return;
+
+		if ((X > -1 && X < Constants.chunkSize) && (Y > -1 && Y < Constants.chunkSize))
+		{
+
+		}
+		else
+		{
+			if (toSwapX > Constants.chunkSize) i = 1;
+			if (toSwapX < 0) i = -1;
+			if (toSwapX > Constants.chunkSize) j = 1;
+			if (toSwapX < 0) j = -1;
+		}
+
+	} 
+
+	public static void UpdateSolid()
+	{
+
+	}
+
+	public static void UpdateLiquid()
+	{
+
+	}
+
+	public static void UpdateGass()
+	{
+
+	}
+
 	public static void MoveDown(GameObject chunk, Constants.element[,] matrix, Constants.element[,] nMatrix, int x, int y, out Constants.element[,] oMatrix, out bool move)
 	{
 		oMatrix = nMatrix;
@@ -63,30 +98,4 @@ public static class PhysicsMannager
 		return;
 	}
 
-	public static void MoveUp(GameObject chunk, Constants.element[,] matrix, Constants.element[,] nMatrix, int x, int y, out Constants.element[,] oMatrix, out bool move)
-	{
-		oMatrix = nMatrix;
-		move = false;
-
-		oMatrix = nMatrix;
-		return;
-	}
-
-	public static void MoveDiagonalyUp(GameObject chunk, Constants.element[,] matrix, Constants.element[,] nMatrix, int x, int y, out Constants.element[,] oMatrix, out bool move)
-	{
-		oMatrix = nMatrix;
-		move = false;
-
-		oMatrix = nMatrix;
-		return;
-	}
-
-	public static void MoveSide(GameObject chunk, Constants.element[,] matrix, Constants.element[,] nMatrix, int x, int y, out Constants.element[,] oMatrix, out bool move)
-	{
-		oMatrix = nMatrix;
-		move = false;
-
-		oMatrix = nMatrix;
-		return;
-	}
 }

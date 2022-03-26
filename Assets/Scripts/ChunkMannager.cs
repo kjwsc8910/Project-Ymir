@@ -71,9 +71,7 @@ public class ChunkMannager : MonoBehaviour
 			{
 				for (int x = 0; x < Constants.chunkSize; x++)
 				{
-                    bool move = false;
-                    if (move == false && Constants.eDataSet(matrix[x, y].type).down == true) PhysicsMannager.MoveDown(chunk, matrix, nMatrix, x, y, out nMatrix, out move);
-                    if (move == false && Constants.eDataSet(matrix[x, y].type).dDown == true) PhysicsMannager.MoveDiagonalDown(chunk, matrix, nMatrix, x, y, out nMatrix, out move);
+                    //Run Physics
 				}
 			}
 		}

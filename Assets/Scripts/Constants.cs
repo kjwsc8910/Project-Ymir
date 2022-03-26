@@ -15,9 +15,9 @@ public static class Constants
 	{ 
 		eData[] array = new eData[]
 		{
-			new eData(false, false, false, false ,false),	//Empty
-			new eData(false, false, true, true, false),		//Sand
-			new eData(false, false, true, true, true)		//Water
+			new eData(eState.Empty, Color.black),	//Empty
+			new eData(eState.Solid, Color.yellow),	//Sand
+			new eData(eState.Liquid, Color.blue)	//Water
 		};
 		return array[(int)t];
 	}
@@ -25,28 +25,12 @@ public static class Constants
 
 	public struct element
 	{
-		public Color colour;
-
-		public int posX;
-		public int posY;
-
-		public int velX;
-		public int velY;
-
 		public eType type;
 
-		public element(Color colour, int x, int y, int vx, int vy, eType type)
+		public element(eType type) //Constructor
 		{
-			this.colour = colour;
-
-			this.posX = x;
-			this.posY = y;
-
-			this.velX = vx;
-			this.velY = vy;
-
 			this.type = type;
-		} //Constructor
+		} 
 	}
 
 	public enum eType
@@ -56,17 +40,23 @@ public static class Constants
 		water,
 	}
 
+	public enum eState
+	{
+		Empty,
+		Solid,
+		Liquid,
+		Gass,
+	}
+
 	public class eData
 	{
-		public readonly bool up, dUp, down, dDown, side;
+		public readonly eState state;
+		public readonly Color colour;
 
-		public eData(bool up,  bool dUp, bool down, bool dDown, bool side)
+		public eData(eState state, Color colour)
 		{
-			this.up = up;
-			this.dUp = dUp;
-			this.down = down;			
-			this.dDown = dDown;
-			this.side = side;
+			this.state = state;
+			this.colour = colour;
 		}
 	}
 }

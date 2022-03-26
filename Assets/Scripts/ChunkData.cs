@@ -36,7 +36,7 @@ public class ChunkData : MonoBehaviour
         mousePos.x = Mathf.FloorToInt(mousePos.x); //Round down 
         mousePos.y = Mathf.FloorToInt(mousePos.y);
 
-        matrix[(int)mousePos.x, (int)mousePos.y] = new Constants.element(Color.yellow, 0, 0, 0, 0, Constants.eType.Sand); //Spawn Sand     
+        matrix[(int)mousePos.x, (int)mousePos.y] = new Constants.element(Constants.eType.Sand); //Spawn Sand     
 
     }
 
