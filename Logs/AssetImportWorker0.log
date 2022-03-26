@@ -262,3 +262,43 @@ System memory in use after: 86.1 MB.
 Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 2237.
 Total: 1.904200 ms (FindLiveObjects: 0.214400 ms CreateObjectMapping: 0.042200 ms MarkObjects: 1.572200 ms  DeleteObjects: 0.074400 ms)
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000541 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.48 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.656 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.32 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1756 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 86.1 MB.
+System memory in use after: 86.1 MB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 2240.
+Total: 2.236100 ms (FindLiveObjects: 0.138500 ms CreateObjectMapping: 0.034000 ms MarkObjects: 1.885000 ms  DeleteObjects: 0.177600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001261 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.32 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.668 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.32 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1756 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 86.1 MB.
+System memory in use after: 86.1 MB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 2243.
+Total: 2.178200 ms (FindLiveObjects: 0.282800 ms CreateObjectMapping: 0.039000 ms MarkObjects: 1.761100 ms  DeleteObjects: 0.094200 ms)
+
